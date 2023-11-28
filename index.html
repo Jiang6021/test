@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>網路實驗作業</title>
+    <style>
+        h1 {
+            font-size: 45px; /* 設定文字大小，可以根據需要調整像素大小 */
+        }
+        h4 {
+            margin-top: 10px; /* 設定頂部間距 */
+        }
+        .flex-container1{
+            display: flex;
+            justify-content: flex-end;
+        }
+        .flex-container2{ /*中間那塊*/
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; 
+            height: 4vh; /*螢幕百分比*/
+        }
+        a {
+            margin-right: 5px;
+            margin-top: 10px; 
+            color: beige;
+        }
+        img {
+            width: 15%; /* 設定寬度 */
+            height: auto; /* 自動調整，保持圖片比例 */
+            max-width: 100%;
+        }
+        body{/*背景*/
+            margin: 0;
+            padding: 0;
+            background-image: url('https://www.ndhu.edu.tw/var/file/0/1000/pictures/96/m/mczh-tw1920x1920_small186953_422060698520.jpg'); /* 網路上圖片的URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* 讓背景圖片固定在視窗中，不隨滾動而移動 */
+        }
+        @media screen and (max-width: 800px) {
+            .flex-container1 {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        input, select {
+            width: 10%; /* 設定寬度為容器寬度的50% */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="flex-container1">
+        <a href="https://www.google.com.tw/?hl=zh_TW" >Google</a>
+        <a href="https://www.youtube.com/">Youtube</a>
+        <a href="https://elearn4.ndhu.edu.tw/moodle/">E-learing</a>
+        <a href="https://chat.openai.com/">ChatGPT</a>
+        <a href="https://youtu.be/unSRZn9jMLg?si=4SJwgO3dgvAUgtRv">Zzz</a>
+    </div>
+    <!-- 圖片網址 -->
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuaFEcPOevXXgFeqAU9YjSc7aY86aymuZsTA&usqp=CAU">
+    <div class="flex-container2">
+        <h1>Basic Calculate</h1>
+        <h4>Everything is figure-outable</h4>
+        <input type="num" id = "fir" placeholder="Enter a number:"><!--第一個數-->
+        <select id="dropdown" name="dropdown">
+            <option value="cal1">+</option>
+            <option value="cal2">-</option>
+            <option value="cal3">*</option>
+            <option value="cal4">/</option>
+        </select>
+        <input type="num" id = "sec" placeholder="Enter a number:"><!--第二個數-->
+        <button onclick="Calculate();">Calculate</button>
+        <p id = "result"></p>
+        <script type="text/JavaScript">
+            function Calculate() {
+                var num1 = document.getElementById("fir");
+                var number1 = Number(num1.value);
+                var num2 = document.getElementById("sec");
+                var number2 = Number(num2.value);
+                var operator = document.getElementById("dropdown").value;
+                var result;
+                if (operator=="cal1") {     /*  +  */
+                    result = number1+number2;
+                }else if(operator=="cal2"){     /*  -  */
+                    result = number1-number2;
+                }else if(operator=="cal3"){     /*  *  */
+                    result = number1*number2;
+                }else{     /*  /  */
+                    result = number1/number2;
+                }
+
+                document.getElementById("result").textContent = "Result = " + result;
+            }
+        </script>
+    </div>
+</body>
+</html>
